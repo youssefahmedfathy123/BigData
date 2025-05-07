@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Url> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Details</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .url-item { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .url-title { color: #1a0dab; font-size: 18px; font-weight: bold; }
+        .url-link { color: #006621; font-size: 14px; }
+        .url-desc { color: #545454; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>URL Search Results</h1>
+    
+    @if (Model != null && Model.Any())
+    {
+        foreach (var url in Model)
+        {
+                <div class="url-item">
+                    <div class="url-title">@url.Name <span>@url.Number</span></div>
+                </div>
+        }
+    }
+    else
+    {
+        <p>No URLs found.</p>
+    }
+
+    <a asp-controller="Home" asp-action="Index">Return to search</a>
+</body>
+</html>
+
